@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('type_vehicules', function (Blueprint $table) {
+        Schema::create('communes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->decimal('price_journalier', 10, 2)->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('type_vehicules');
+        Schema::dropIfExists('communes');
     }
 };

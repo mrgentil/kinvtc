@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('conducteur_id');
+            //$table->unsignedBigInteger('conducteur_id');
             $table->unsignedBigInteger('vehicule_id');
             $table->dateTime('debut_reservation');
             $table->dateTime('fin_reservation');
             $table->enum('statut', ['Confirmee', 'En Attente', 'Annulee', 'Terminee']);
             $table->decimal('montant_total', 10, 2);
-            $table->timestamp('date_creation');
+           // $table->timestamp('date_creation');
             $table->foreign('client_id')->references('id')->on('users');
-            $table->foreign('conducteur_id')->references('id')->on('users');
+            //$table->foreign('conducteur_id')->references('id')->on('users');
             $table->foreign('vehicule_id')->references('id')->on('vehicules');
             $table->timestamps();
         });

@@ -1,26 +1,26 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="no-bottom no-top" id="content">
+    <!-- content begin -->
+    <div class="no-bottom no-top " id="content">
         <div id="top"></div>
-        <section id="section-hero" aria-label="section" class="jarallax no-top no-bottom" style="background-image: url(images/slider/4.jpg); background-size: cover; background-repeat: no-repeat; background-color: black">
+        <section id="section-hero" aria-label="section" class="jarallax no-top no-bottom" style="background-image: url({{asset('images/slider/4.jpg')}}); background-size: cover; background-repeat: no-repeat; background-color: black;">
             <div class="overlay-bg no-top no-bottom">
                 <div class="v-center">
                     <div class="container position-relative z1000">
+                        <!-- <div class="spacer-double d-lg-none d-sm-block"></div>
                         <div class="spacer-double d-lg-none d-sm-block"></div>
-                        <div class="spacer-double d-lg-none d-sm-block"></div>
-                        <div class="spacer-double d-lg-none d-sm-block"></div>
+                        <div class="spacer-double d-lg-none d-sm-block"></div> -->
                         <div class="row align-items-center">
-                            <div class="col-lg-6 text-light">
+                            <div class="col-lg-6 text-light d-none d-md-block d-lg-block">
                                 <h4><span class="id-color">Louer un véhicule de façon simple et rapide</span></h4>
                                 <div class="spacer-10"></div>
                                 <h1 class="mb-2">Explorer Kinshasa avec un véhicule confortable</h1>
                                 <div class="spacer-10"></div>
-                                <p class="lead">Embarquez pour des aventures inoubliables et découvrez Kinshasa dans un confort et
-                                    un style inégalés grâce à notre flotte de voitures exceptionnellement confortables.</p>
+                                <p class="lead">Embarquez pour des aventures inoubliables et découvrez Kinshasa dans un confort et un style inégalés grâce à notre flotte de voitures exceptionnellement confortables.</p>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-6  mt-5">
                                 <div class="spacer-single sm-hide"></div>
                                 <div class="p-4 rounded-3 shadow-soft text-light" data-bgcolor="rgba(0, 0, 0, .6)">
 
@@ -212,67 +212,118 @@
                         <div class="spacer-double d-lg-none d-sm-block"></div>
                     </div>
 
-                    <div class="position-absolute d-flex bottom-20">
+                    <!-- <div class="position-absolute d-flex bottom-20">
                         <div class="de-marquee-list d-marquee-small">
-                            <div class="d-item">
-                                <span class="d-item-txt">SUV</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Sedan</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Pick-up</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Compacts</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Minivans</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Bus</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
+                        <div class="d-item">
+                            <span class="d-item-txt">SUV</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Sedan</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Pick-up</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Compacts</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Minivans</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Bus</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
 
                             </div>
                         </div>
 
                         <div class="de-marquee-list d-marquee-small">
                             <div class="d-item">
-                                <span class="d-item-txt">SUV</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Sedan</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Pick-up</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Compacts</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Minivans</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
-                                <span class="d-item-txt">Bus</span>
-                                <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                        </span>
+                            <span class="d-item-txt">SUV</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Sedan</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Pick-up</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Compacts</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Minivans</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
+                            <span class="d-item-txt">Bus</span>
+                            <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                            </span>
 
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <section id="section-news" style="background-color: #f8f8f8">
+            <div class="container">
+                <div class="row align-items-center mx-auto">
+                    <div class="col-lg-6 offset-lg-3 text-center">
+                        <h2>Nos Services</h2>
+                        <!-- <p>Breaking news, fresh perspectives, and in-depth coverage - stay ahead with our latest news, insights, and analysis.</p> -->
+                        <div class="spacer-20"></div>
+                    </div>
+
+                    <div class="col-lg-6 mb10">
+                        <div class="bloglist s2 item h-100">
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <!-- <div class="date-box">
+                                        <div class="m">10</div>
+                                        <div class="d">MAR</div>
+                                    </div> -->
+                                    <img alt="" src="images/slider/1.jpg" class="lazy" >
+                                </div>
+                                <div class="post-image mt-1 h-100 col-12"  >
+
+                                    <h5><a href="service1.php">Location des vehicules<span></span></a></h5>
+                                    <p style="font-size: 12px;">Un service qui vous permet de bénéficier d'un transport confortable, sécurisé et personnalisé. Que ce soit pour un déplacement professionnel, un événement privé ou une visite touristique, vous pouvez choisir le véhicule  qui correspondent à vos besoins et à votre budget. Vous n'avez pas à vous soucier de la conduite, du stationnement ou de l'itinéraire, vous profitez simplement de votre trajet en toute sérénité.</p>
+                                    <a class="btn-main mb-2" href="service1.php">En savoir plus</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 mb10">
+                        <div class="bloglist s2 item h-100">
+                            <div class="post-content">
+                                <div class="post-image ">
+                                    <!-- <div class="date-box">
+                                        <div class="m">10</div>
+                                        <div class="d">MAR</div>
+                                    </div> -->
+                                    <img alt="" src="images/slider/3.jpg" class="laz" >
+                                </div>
+                                <div class="post-image mt-1 h-100 col-12" >
+                                    <h5><a href="service2.php">Transfert Aéroport<span></span></a></h5>
+                                    <p style="font-size: 12px;">Un moyen rapide, confortable et économique vous permettant de vous rendre à votre destination depuis l'aéroport ou vice versa. Un service de transfert d'aéroport personnalisé et adapté à vos besoins. Que vous voyagiez seul, en famille ou en groupe, nous avons le véhicule qu'il vous faut. Juste reservant en ligne et profitez d'un accueil chaleureux, d'un chauffeur professionnel et d'un trajet sans stress.</p>
+                                    <a class="btn-main mb-2" href="service2.php">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </section>
@@ -282,39 +333,33 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 offset-lg-3 text-center">
                         <h2>Notre flotte de véhicules</h2>
-                        <p>Conduisez vos rêves vers la réalité avec une flotte exquise de véhicules polyvalents pour
-                            des voyages inoubliables avec un chauffeur à bord.</p>
+                        <p>Conduisez vos rêves vers la réalité avec une flotte exquise de véhicules polyvalents pour des voyages inoubliables avec un chauffeur à bord.</p>
                         <div class="spacer-20"></div>
                     </div>
-
                     <div class="clearfix"></div>
-
                     <div id="items-carousel" class="owl-carousel wow fadeIn">
                         @foreach($vehicules as $vehicule)
                         <div class="col-lg-12">
                             <div class="de-item mb30">
+                                <h4>{{$vehicule->name}} </h4><span class="d-atr"><img src="images/icons/4.svg" alt="">{{$vehicule->type->name}}</span>
                                 <div class="d-img">
                                     <img src="{{Voyager::image($vehicule->image_cover)}}" class="img-fluid" alt="" style="height: 240px;">
                                 </div>
                                 <div class="d-info">
                                     <div class="d-text">
-                                        <h4>{{$vehicule->marque}} {{$vehicule->modele}}</h4>
                                         <!-- <div class="d-item_like">
                                             <i class="fa fa-heart"></i><span>74</span>
                                         </div> -->
                                         <div class="d-atr-group">
-                                            <span class="d-atr"><img src="{{asset('images/icons/1.svg')}}" alt="">{{$vehicule->capacite_passagers}}</span>
-                                            <span class="d-atr"><img src="{{asset('images/icons/2.svg')}}" alt="">{{$vehicule->door}}</span>
-                                            <span class="d-atr"><img src="{{asset('images/icons/3.svg')}}" alt="">{{$vehicule->luggage}}</span>
-                                            <span class="d-atr"><img src="{{asset('images/icons/4.svg')}}" alt="">{{$vehicule->type->name}}</span>
+                                            <span class="d-atr"><img src="images/icons/1.svg" alt="">{{$vehicule->capacite_passagers}}</span>
+                                            <span class="d-atr"><img src="images/icons/2.svg" alt="">4</span>
+                                            <span class="d-atr"><img src="images/icons/3.svg" alt="">4</span>
+                                            <span class="d-atr"><i class="fa fa-dashboard"></i>150 Km</span>
+
                                         </div>
+                                        <br>
                                         <div class="d-price">
-                                            {{$vehicule->type->mileage}} kilomètres / Jour
-                                            @if($vehicule->type_reservation === 'Journalière')
-                                                <span>{{ $vehicule->type->price_journalier }}$</span>
-                                            @else
-                                                <span>{{ $vehicule->type->price_aerot }}$</span>
-                                            @endif
+                                            <span>${{ $vehicule->type->price_journalier }} Jour</span>
                                             <a class="btn-main" href="{{ $vehicule->slug_link }}">Voir +</a>
                                         </div>
                                     </div>
@@ -332,10 +377,10 @@
             <img src="images/background/2.jpg" class="jarallax-img" alt="">
             <div class="container">
                 <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInRight">
-                        <h2>Nous proposons une large gamme de véhicules <span class="id-color"> utilitaires</span> et <span class="id-color">luxueux </span> pour toutes les occasions.</h2>
+                    <div class="col-lg-12 wow fadeInRight">
+                        <h4>Nous proposons une large gamme de véhicules <span class="id-color"> utilitaires</span> et <span class="id-color">luxueux </span> pour toutes les occasions.</h4>
                     </div>
-                    <div class="col-lg-6 wow fadeInLeft">
+                    <div class="col-lg-12 wow fadeInLeft" >
                         Chez nous, vous trouverez la voiture de location qui vous convient, que vous voyagiez pour le travail ou pour le plaisir. Nous vous proposons une large gamme de véhicules de qualité, du plus économique au plus luxueux, à des tarifs attractifs. Vous pouvez réserver en ligne en quelques clics et profiter de notre service rapide et efficace. Nous vous offrons la possibilité de louer une voiture pour une courte ou une longue durée, selon vos besoins. Que ce soit pour un déplacement professionnel à Kinshasa, des vacances en famille ou une escapade le temps d'un week-end, nous avons la solution de location qui vous correspond.
                     </div>
                 </div>
@@ -368,8 +413,40 @@
                 </div>
             </div>
         </section>
+        <section>
+            <div class="container">
+                <div class="row"><div class="col text-center">
+                        <h2>Nos fonctionnalités</h2>
+                        <p>Découvrez un monde de commodité, de sécurité et de personnalisation, ouvrant la voie à des aventures inoubliables et à des solutions de mobilité sans faille.</p>
+                        <div class="spacer-20"></div>
+                        <div class="spacer-20"></div>
+                    </div></div>
 
-        <section aria-label="section">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fa fa-trophy de-icon mb20"></i>
+                        <h4>Des services de première classe</h4>
+                        <p>Là où le luxe rencontre un soin exceptionnel, créant des moments inoubliables et dépassant toutes vos attentes.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa fa-road de-icon mb20"></i>
+                        <h4>Assistance routière 24h/24, 7j/7</h4>
+                        <p>  Une assistance fiable lorsque vous en avez le plus besoin, vous permettant de vous déplacer en toute confiance et en toute tranquillité d'esprit.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa fa-tag de-icon mb20"></i>
+                        <h4>Qualité à moindre coût</h4>
+                        <p>Débloquer une brillance abordable en élevant la qualité tout en minimisant les coûts pour une valeur maximale.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa fa-money de-icon mb20"></i>
+                        <h4>Prix Fixe </h4>
+                        <p>Pour tous les trajets réservés à l'avance le prix est fixé au moment de la réservation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section aria-label="section">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 offset-lg-3 text-center">
@@ -411,19 +488,19 @@
                             <i class="fa bg-color fa-map-pin"></i>
                             <div class="d-inner">
                                 <h4>Free Pick-Up </h4>
-                                Enjoy free pickup and drop-off services, adding an extra layer of ease to your car rental experience.
+                                    Enjoy free pickup and drop-off services, adding an extra layer of ease to your car rental experience.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <section id="section-img-with-tab" class="bg-dark text-light">
+        <section id="section-img-with-tab" class="bg-dark text-light d-none d-md-block d-lg-block d-xl-block d-sm-none" style="background-image: url(images/background/14.jpg); background-size: cover;">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 offset-lg-7">
+                <div class="row">
 
+                    <div class="col-8 wow pull-right">
                         <h3>NOS VALEURS ET ENGAGEMENTS FONDAMENTAUX</h3>
                         <div class="spacer-20"></div>
 
@@ -447,12 +524,12 @@
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"><p>Notre équipe de chauffeurs professionnels vous reçoit avec respect et courtoisie. Ils s'efforcent de vous fournir un service de qualité qui répond à vos besoins et à vos attentes.</p></div>
                             <div class="tab-pane fade" id="pills" role="tabpanel" aria-labelledby="pills-contact-tab"><p>Nous veillons à ce que nos chauffeurs soient le plus discrets possible lors de vos déplacements, afin de respecter votre intimité et votre confort. Que vous voyagiez pour affaires ou pour le plaisir, vous pouvez compter sur notre service de qualité et notre discrétion professionnelle. Nous vous conduisons à destination en toute sécurité et en toute sérénité.</p></div>
                         </div>
-
                     </div>
                 </div>
+
             </div>
 
-            <div class="image-container col-md-6 pull-right" data-bgimage="url(images/misc/e1.jpg) center"></div>
+            <!-- <div class="image-container col-md-6 pull-right" data-bgimage="url(images/misc/e1.jpg) center"></div> -->
         </section>
 
         <!-- <section id="section-news">
@@ -575,7 +652,7 @@
             </div>
         </section> -->
 
-        <section id="section-faq">
+        <!-- <section id="section-faq">
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
@@ -635,7 +712,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <section id="section-call-to-action" class="bg-color-2 pt60 pb60 text-light">
             <div class="container">
@@ -651,7 +728,7 @@
                         Appelez-nous maintenant
                         </span>
                             <span class="pnb-num">
-                            <a class="text-white" href="tel:00243816416168">+243 816 416 168</a>
+                            <a class="text-white fs-4" href="tel:00243841211267">+243 841 211 267</a>
                         </span>
                         </div>
                         <a href="#" class="btn-main">Nous contacter</a>

@@ -38,24 +38,27 @@
                     </div>
                     <div class="de-flex-col header-col-mid">
                         <ul id="mainmenu">
-                            <li><a class="menu-item" href="{{url('/')}}">Accueil</a></li>
+                            <li><a class="menu-item" href="{{url('/service')}}">Location</a></li>
                             <li><a class="menu-item" href="{{route('cars')}}">Nos vehicules</a></li>
-                            <li><a class="menu-item" href="#">Reservations</a>
-                                <ul>
-                                    <li><a class="menu-item" href="{{route('daily')}}">Journalière</a></li>
-                                    <li><a class="menu-item" href="{{route('transport')}}">Transport Aeroport</a></li>
-
-                                </ul>
-                            </li>
-
+                            <li><a class="menu-item" href="{{route('aeroport')}}">Transport Aeroport</a></li>
                         </ul>
                     </div>
                     <div class="de-flex-col">
-                        <div class="menu_side_area">
-                            <a href="{{route('login')}}" class="btn-main">Se connecter</a>
-                            <span id="menu-btn"></span>
-                        </div>
+                        @if(Auth::check())
+                            <!-- L'utilisateur est connecté, affichez le menu "Espace Client" -->
+                            <div class="menu_side_area">
+                                <a href="http://localhost:8000/admin/" class="btn-main">Espace Client</a>
+                                <span id="menu-btn"></span>
+                            </div>
+                        @else
+                            <!-- L'utilisateur n'est pas connecté, affichez le bouton "Se connecter" -->
+                            <div class="menu_side_area">
+                                <a href="{{ route('login') }}" class="btn-main">Se connecter</a>
+                                <span id="menu-btn"></span>
+                            </div>
+                        @endif
                     </div>
+
                 </div>
             </div>
         </div>

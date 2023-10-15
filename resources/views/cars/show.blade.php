@@ -9,9 +9,22 @@
             <img src="{{asset('images/background/2.jpg')}}" class="jarallax-img" alt="">
             <div class="center-y relative text-center">
                 <div class="container">
+                    <!-- Message de Succès après le Vote -->
+                    @if(session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+                    <!-- Message de Connexion Requis -->
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h1>{{$vehicule->marque}}  {{$vehicule->modele}}</h1>
+                            <h1>{{$vehicule->name}}</h1>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -41,71 +54,34 @@
                     </div>
 
                     <div class="col-lg-3">
-                        <h3>{{$vehicule->marque}}  {{$vehicule->modele}}</h3>
-                        <p>
-                            {!! $vehicule->description !!}
-                        </p>
-
+                        <h3>{{$vehicule->name}}</h3>
                         <div class="spacer-10"></div>
 
                         <h4>Specifications</h4>
                         <div class="de-spec">
                             <div class="d-row">
                                 <span class="d-title">Type</span>
-                                <spam class="d-value">{{$vehicule->type->name}}</spam>
+                                <span class="d-value">{{$vehicule->type->name}}</span>
                             </div>
                             <div class="d-row">
                                 <span class="d-title">Place</span>
-                                <spam class="d-value">{{$vehicule->capacite_passagers}}</spam>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Portières</span>
-                                <spam class="d-value">{{$vehicule->door}}</spam>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Bagage</span>
-                                <spam class="d-value">{{$vehicule->luggage}}</spam>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Type Carburant</span>
-                                <spam class="d-value">{{$vehicule->fuel_type}}</spam>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Moteur</span>
-                                <spam class="d-value">{{$vehicule->engine}}</spam>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Annéee de fabrication</span>
-                                <spam class="d-value">{{$vehicule->annee_fabrication}}</spam>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Kilométrage</span>
-                                <span class="d-value">{{$vehicule->mileage}}</span>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Transmission</span>
-                                <span class="d-value">{{$vehicule->transmission}}</span>
+                                <span class="d-value">{{$vehicule->capacite_passagers}}</span>
                             </div>
                             <div class="d-row">
                                 <span class="d-title">Volant</span>
-                                <spam class="d-value">{{$vehicule->drive}}</spam>
-                            </div>
-                            <div class="d-row">
-                                <span class="d-title">Consommation de carburant</span>
-                                <spam class="d-value">{{$vehicule->fuel_economy}}</spam>
+                                <span class="d-value">{{$vehicule->drive}}</span>
                             </div>
                             <div class="d-row">
                                 <span class="d-title">Couleur Externe</span>
-                                <spam class="d-value">{{$vehicule->exterior_color}}</spam>
+                                <span class="d-value">{{$vehicule->exterior_color}}</span>
                             </div>
                             <div class="d-row">
                                 <span class="d-title">Couleur Interne</span>
-                                <spam class="d-value">{{$vehicule->interior_color}}</spam>
+                                <span class="d-value">{{$vehicule->interior_color}}</span>
                             </div>
                         </div>
 
                         <div class="spacer-single"></div>
-
                         <h4>Autres</h4>
                         <ul class="ul-style-2">
                             <li>{{$vehicule->bluetooth}}</li>
@@ -114,165 +90,62 @@
                             <li>{{$vehicule->sunroof}}</li>
                         </ul>
                     </div>
-
                     <div class="col-lg-3">
                         <div class="de-price text-center">
                             Tarif
-                            @if($vehicule->type_reservation === 'Journalière')
-                                <h3>{{ $vehicule->type->price_journalier }}$</h3>
-                            @else
-                                <h3>{{ $vehicule->type->price_aerot }}$</h3>
-                            @endif
-
+                            <h3 class="montant-total">{{ $vehicule->type->price_journalier }}$</h3>
                         </div>
                         <div class="spacer-30"></div>
                         <div class="de-box mb25">
-                            <form name="contactForm" id='contact_form' method="post">
-                                <h4>Booking this car</h4>
+                            <form method="POST" action="{{ route('reservation') }}">
+                                @csrf
+                                <!-- Ajoutez un champ de sélection pour choisir le véhicule -->
+                                <input type="hidden" name="vehicule_id" value="{{ $vehicule->id }}">
 
-                                <div class="spacer-20"></div>
-
-                                <div class="row">
-                                    <div class="col-lg-12 mb20">
-                                        <h5>Pick Up Location</h5>
-                                        <input type="text" name="PickupLocation" onfocus="geolocate()" placeholder="Enter your pickup location" id="autocomplete" autocomplete="off" class="form-control">
-
-                                        <div class="jls-address-preview jls-address-preview--hidden">
-                                            <div class="jls-address-preview__header">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 mb20">
-                                        <h5>Drop Off Location</h5>
-                                        <input type="text" name="DropoffLocation" onfocus="geolocate()" placeholder="Enter your dropoff location" id="autocomplete2" autocomplete="off" class="form-control">
-
-                                        <div class="jls-address-preview jls-address-preview--hidden">
-                                            <div class="jls-address-preview__header">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 mb20">
-                                        <h5>Pick Up Date & Time</h5>
-                                        <div class="date-time-field">
-                                            <input type="text" id="date-picker" name="Pick Up Date" value="">
-                                            <select name="Pick Up Time" id="pickup-time">
-                                                <option selected disabled value="Select time">Time</option>
-                                                <option value="00:00">00:00</option>
-                                                <option value="00:30">00:30</option>
-                                                <option value="01:00">01:00</option>
-                                                <option value="01:30">01:30</option>
-                                                <option value="02:00">02:00</option>
-                                                <option value="02:30">02:30</option>
-                                                <option value="03:00">03:00</option>
-                                                <option value="03:30">03:30</option>
-                                                <option value="04:00">04:00</option>
-                                                <option value="04:30">04:30</option>
-                                                <option value="05:00">05:00</option>
-                                                <option value="05:30">05:30</option>
-                                                <option value="06:00">06:00</option>
-                                                <option value="06:30">06:30</option>
-                                                <option value="07:00">07:00</option>
-                                                <option value="07:30">07:30</option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:30">08:30</option>
-                                                <option value="09:00">09:00</option>
-                                                <option value="09:30">09:30</option>
-                                                <option value="10:00">10:00</option>
-                                                <option value="10:30">10:30</option>
-                                                <option value="11:00">11:00</option>
-                                                <option value="11:30">11:30</option>
-                                                <option value="12:00">12:00</option>
-                                                <option value="12:30">12:30</option>
-                                                <option value="13:00">13:00</option>
-                                                <option value="13:30">13:30</option>
-                                                <option value="14:00">14:00</option>
-                                                <option value="14:30">14:30</option>
-                                                <option value="15:00">15:00</option>
-                                                <option value="15:30">15:30</option>
-                                                <option value="16:00">16:00</option>
-                                                <option value="16:30">16:30</option>
-                                                <option value="17:00">17:00</option>
-                                                <option value="17:30">17:30</option>
-                                                <option value="18:00">18:00</option>
-                                                <option value="18:30">18:30</option>
-                                                <option value="19:00">19:00</option>
-                                                <option value="19:30">19:30</option>
-                                                <option value="20:00">20:00</option>
-                                                <option value="20:30">20:30</option>
-                                                <option value="21:00">21:00</option>
-                                                <option value="21:30">21:30</option>
-                                                <option value="22:00">22:00</option>
-                                                <option value="22:30">22:30</option>
-                                                <option value="23:00">23:00</option>
-                                                <option value="23:30">23:30</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 mb20">
-                                        <h5>Return Date & Time</h5>
-                                        <div class="date-time-field">
-                                            <input type="text" id="date-picker-2" name="Collection Date" value="">
-                                            <select name="Collection Time" id="collection-time">
-                                                <option selected disabled value="Select time">Time</option>
-                                                <option value="00:00">00:00</option>
-                                                <option value="00:30">00:30</option>
-                                                <option value="01:00">01:00</option>
-                                                <option value="01:30">01:30</option>
-                                                <option value="02:00">02:00</option>
-                                                <option value="02:30">02:30</option>
-                                                <option value="03:00">03:00</option>
-                                                <option value="03:30">03:30</option>
-                                                <option value="04:00">04:00</option>
-                                                <option value="04:30">04:30</option>
-                                                <option value="05:00">05:00</option>
-                                                <option value="05:30">05:30</option>
-                                                <option value="06:00">06:00</option>
-                                                <option value="06:30">06:30</option>
-                                                <option value="07:00">07:00</option>
-                                                <option value="07:30">07:30</option>
-                                                <option value="08:00">08:00</option>
-                                                <option value="08:30">08:30</option>
-                                                <option value="09:00">09:00</option>
-                                                <option value="09:30">09:30</option>
-                                                <option value="10:00">10:00</option>
-                                                <option value="10:30">10:30</option>
-                                                <option value="11:00">11:00</option>
-                                                <option value="11:30">11:30</option>
-                                                <option value="12:00">12:00</option>
-                                                <option value="12:30">12:30</option>
-                                                <option value="13:00">13:00</option>
-                                                <option value="13:30">13:30</option>
-                                                <option value="14:00">14:00</option>
-                                                <option value="14:30">14:30</option>
-                                                <option value="15:00">15:00</option>
-                                                <option value="15:30">15:30</option>
-                                                <option value="16:00">16:00</option>
-                                                <option value="16:30">16:30</option>
-                                                <option value="17:00">17:00</option>
-                                                <option value="17:30">17:30</option>
-                                                <option value="18:00">18:00</option>
-                                                <option value="18:30">18:30</option>
-                                                <option value="19:00">19:00</option>
-                                                <option value="19:30">19:30</option>
-                                                <option value="20:00">20:00</option>
-                                                <option value="20:30">20:30</option>
-                                                <option value="21:00">21:00</option>
-                                                <option value="21:30">21:30</option>
-                                                <option value="22:00">22:00</option>
-                                                <option value="22:30">22:30</option>
-                                                <option value="23:00">23:00</option>
-                                                <option value="23:30">23:30</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="lieu_embarquement">Lieu d'embarquement :</label>
+                                    <label for="lieu_embarquement"></label><input type="text" name="lieu_embarquement" id="lieu_embarquement" placeholder="Entrez le lieu d'embarquement" class="form-control">
+                                    @error('lieu_embarquement')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="lieu_livraison">Lieu de livraison :</label>
+                                    <label for="lieu_livraison"></label><input type="text" name="lieu_livraison" id="lieu_livraison" placeholder="Entrez le lieu de livraison" class="form-control">
+                                    @error('lieu_livraison')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <br>
 
-                                <input type='submit' id='send_message' value='Book Now' class="btn-main btn-fullwidth">
+                                <div class="form-group">
+                                    <label for="debut_reservation">Date de prise en charge :</label>
+                                    <label for="debut_reservation"></label><input type="date" name="debut_reservation" id="debut_reservation" placeholder="Date de prise en charge" class="form-control">
+                                    @error('debut_reservation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="CollectionDate">Date de retour :</label>
+                                    <label for="fin_reservation"></label><input type="date" name="fin_reservation" id="fin_reservation" placeholder="Date de retour" class="form-control">
 
-                                <div class="clearfix"></div>
+                                    @error('fin_reservation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <br>
+                                <!-- Vous pouvez ajouter d'autres champs de formulaire au besoin -->
+                                <button class="btn-main btn-fullwidth" type="submit">Réserver ce véhicule</button>
                             </form>
                         </div>
                     </div>

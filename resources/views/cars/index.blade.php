@@ -34,14 +34,10 @@
                                     </div>
                                     <div class="d-info">
                                         <div class="d-text">
-                                            <h4>{{$vehicule->marque}} {{$vehicule->modele}}</h4>
+                                            <h4>{{$vehicule->name}}</h4>
                                             <div class="d-atr-group">
                                                 <ul class="d-atr">
                                                     <li><span>Places:</span>{{$vehicule->capacite_passagers}}</li>
-                                                    <li><span>Bagages:</span>{{$vehicule->luggage}}</li>
-                                                    <li><span>Portes:</span>{{$vehicule->door}}</li>
-                                                    <li><span>Carburant:</span>{{$vehicule->fuel_type}}</li>
-                                                    <li><span>Moteur:</span>{{$vehicule->engine}}</li>
                                                     <li><span>Volant:</span>{{$vehicule->drive}}</li>
                                                     <li><span>Type:</span>{{$vehicule->type->name}}</li>
                                                 </ul>
@@ -50,11 +46,7 @@
                                     </div>
                                     <div class="d-price">
                                         Tarif
-                                        @if($vehicule->type_reservation === 'Journalière')
-                                            <span>{{ $vehicule->type->price_journalier }}$</span>
-                                        @else
-                                            <span>{{ $vehicule->type->price_aerot }}$</span>
-                                        @endif
+                                        <span>{{ $vehicule->type->price_journalier }}$</span>
                                         <a class="btn-main" href="{{ $vehicule->slug_link }}">Voir +</a>
                                     </div>
                                     <div class="clearfix"></div>
