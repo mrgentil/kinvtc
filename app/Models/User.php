@@ -21,6 +21,8 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
+        'phone',
+        'message'
     ];
 
     /**
@@ -42,4 +44,10 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function reservations()
+    {
+        return $this->hasMany(ReservationJournaliere::class, 'user_id');
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Reservation;
+use App\Models\ReservationJournaliere;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -14,38 +15,22 @@ use Illuminate\Queue\SerializesModels;
 class ReservationConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
-    public Reservation $reservation;
+    public ReservationJournaliere $reservation;
 
 
-    /**
-     * Create a new message instance.
-     *
-     * @param Reservation $reservation
-     */
-    public function __construct(Reservation $reservation)
+
+
+    public function __construct($reservation)
     {
         $this->reservation = $reservation;
     }
-
     /**
      * Build the message.
      *
      * @return $this
      */
-    public function build(): static
+    public function build()
     {
-        return $this->subject('Confirmation Réservation ☺️')
-            ->view('emails.confirmation_reservation');
+        return $this->markdown('emails.reservation.confirmation');
     }
-    public function toMail($notifiable): MailMessage
-    {
-        $url = url('/reservation/' . $this->reservation->id); // Lien vers la page de confirmation
-
-        return (new MailMessage)
-            ->line('Votre réservation a été créée avec succès!')
-            ->action('Cliquez ici pour confirmer', $url)
-            ->line('Merci de nous avoir choisis!');
-    }
-
-
 }

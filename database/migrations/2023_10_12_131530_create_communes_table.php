@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('communes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('price_journalier', 10, 2)->nullable();
             $table->timestamps();
         });
     }

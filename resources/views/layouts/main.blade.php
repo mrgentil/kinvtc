@@ -20,6 +20,8 @@
 
     <!-- color scheme -->
     <link id="colors" href="{{asset('css/colors/scheme-01.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
 
@@ -45,41 +47,57 @@
 ================================================== -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Sélectionnez les champs de formulaire
-        const debutReservation = $('#debut_reservation');
-        const finReservation = $('#fin_reservation');
-        const prixJournalier = {{ $vehicule->type->price_journalier }};
-        const montantTotal = $('.montant-total'); // Utilisez la classe CSS ici
+<script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
 
-        // Mettez à jour le tarif lorsque les champs de formulaire changent
-        debutReservation.on('change', updateTarif);
-        finReservation.on('change', updateTarif);
-
-        function updateTarif() {
-            // Calculez la différence entre les dates de début et de fin
-            const debut = new Date(debutReservation.val());
-            const fin = new Date(finReservation.val());
-            const differenceEnJours = (fin - debut) / (1000 * 60 * 60 * 24);
-
-            if (differenceEnJours <= 0) {
-                // Si la différence est inférieure ou égale à zéro, affichez le prix initial
-                montantTotal.text('$' + prixJournalier);
-            } else {
-                // Sinon, mettez à jour le tarif en fonction de la différence de jours
-                const nouveauMontantTotal = differenceEnJours * prixJournalier;
-                montantTotal.text('$' + nouveauMontantTotal);
-            }
-        }
-    });
-</script>
 
 <script src="{{asset('js/plugins.js')}}"></script>
 <script src="{{asset('js/designesia.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgiM7ogCAA2Y5pgSk2KXZfxF5S_1jsptA&amp;libraries=places&amp;callback=initPlaces" async="" defer=""></script>
 <!-- Include SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function updateDetails() {
+        // Récupérer les nouvelles valeurs soumises depuis le formulaire
+        var newPickupLocation = document.getElementById('pickup-location-input').value;
+        var newPickUpDate = document.getElementById('date-picker').value;
+        var newPickUpTime = document.getElementById('pickup-time').value;
+        var newCollectionDate = document.getElementById('date-picker-2').value;
+        var newCollectionTime = document.getElementById('collection-time').value;
 
+        // Mettre à jour les éléments HTML correspondants avec les nouvelles valeurs
+        document.getElementById('pickup-location').textContent = "Lieu d'embarquement : " + newPickupLocation;
+        document.getElementById('pick-up-details').textContent = "Date et heure de début : " + newPickUpDate + " à " + newPickUpTime;
+        document.getElementById('collection-details').textContent = "Date et heure de retour : " + newCollectionDate + " à " + newCollectionTime;
+    }
+</script>
+<script>
+    function updateDetailsAeroport() {
+        var newPickupLocation = document.getElementById('commune_id-input').value;
+        var newPickUpDate = document.getElementById('date-picker').value;
+        var newPickUpTime = document.getElementById('pickup-time').value;
+        var newCollectionDate = document.getElementById('date-picker-2').value;
+        var newCollectionTime = document.getElementById('collection-time').value;
+
+        // Récupérez la valeur de Aller/Retour
+        var allerRetour = document.getElementById('aller_retour').checked;
+        var allerRetourText = allerRetour ? 'Oui' : 'Non';
+
+        // Récupérez la nouvelle destination
+        var newDropoffLocation = document.getElementById('dropoff-location').value;
+
+        document.getElementById('commune-details').textContent = "Commune : " + newPickupLocation;
+        document.getElementById('destination-details').textContent = "Destination : " + newDropoffLocation;
+        document.getElementById('pick-up-details').textContent = "Date et heure de début : " + newPickUpDate + " à " + newPickUpTime;
+        document.getElementById('collection-details').textContent = "Date et heure de retour : " + newCollectionDate + " à " + newCollectionTime;
+        document.getElementById('aller-retour-details').textContent = "Aller/Retour : " + allerRetourText;
+    }
+
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2()
+    });
+</script>
 </body>
 </html>

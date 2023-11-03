@@ -46,4 +46,6 @@ class Vehicule extends Model
     {
         return $this->belongsTo(TypeVehicule::class,'type_vehicule_id');
     }
+
+
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('reservation_id');
             $table->decimal('montant_paye', 10, 2);
             $table->string('mode_paiement');
-            $table->foreign('reservation_id')->references('id')->on('reservations');
+            $table->foreign('reservation_id')->references('id')->on('reservation_journalieres');
             $table->timestamps();
         });
     }

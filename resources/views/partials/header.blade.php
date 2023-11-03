@@ -41,13 +41,18 @@
                             <li><a class="menu-item" href="{{url('/service')}}">Location</a></li>
                             <li><a class="menu-item" href="{{route('cars')}}">Nos vehicules</a></li>
                             <li><a class="menu-item" href="{{route('aeroport')}}">Transport Aeroport</a></li>
+                            @if(Auth::check())
+                            <li class="d-block d-md-none d-sm-block d-lg-none"><a class="menu-item" href="{{route('dashboard')}}">Espace Client</a></li>
+                            @else
+                                <li class="d-block d-md-none d-sm-block d-lg-none"><a class="menu-item" href="{{ route('login') }}">Se connecter</a></li>
+                            @endif
                         </ul>
                     </div>
                     <div class="de-flex-col">
                         @if(Auth::check())
                             <!-- L'utilisateur est connecté, affichez le menu "Espace Client" -->
                             <div class="menu_side_area">
-                                <a href="http://localhost:8000/admin/" class="btn-main">Espace Client</a>
+                                <a href="{{route('dashboard')}}" class="btn-main">Espace Client</a>
                                 <span id="menu-btn"></span>
                             </div>
                         @else
@@ -58,7 +63,6 @@
                             </div>
                         @endif
                     </div>
-
                 </div>
             </div>
         </div>

@@ -4,105 +4,38 @@
     <!-- content begin -->
     <div class="no-bottom no-top " id="content">
         <div id="top"></div>
-        <section id="section-hero" aria-label="section" class="jarallax no-top no-bottom" style="background-image: url({{asset('images/slider/4.jpg')}}); background-size: cover; background-repeat: no-repeat; background-color: black;">
+        <section id="section-hero" aria-label="section" class="jarallax no-top no-bottom" style="background-image: url({{asset('images/slider/4.jpg')}}); background-size: cover; background-repeat: no-repeat; background-color: black">
             <div class="overlay-bg no-top no-bottom">
                 <div class="v-center">
                     <div class="container position-relative z1000">
-                        <!-- <div class="spacer-double d-lg-none d-sm-block"></div>
                         <div class="spacer-double d-lg-none d-sm-block"></div>
-                        <div class="spacer-double d-lg-none d-sm-block"></div> -->
+                        <div class="spacer-double d-lg-none d-sm-block"></div>
+                        <div class="spacer-double d-lg-none d-sm-block"></div>
                         <div class="row align-items-center">
-                            <div class="col-lg-6 text-light d-none d-md-block d-lg-block">
+                            <div class="col-lg-6 text-light">
                                 <h4><span class="id-color">Louer un véhicule de façon simple et rapide</span></h4>
-                                <div class="spacer-10"></div>
-                                <h1 class="mb-2">Explorer Kinshasa avec un véhicule confortable</h1>
-                                <div class="spacer-10"></div>
-                                <p class="lead">Embarquez pour des aventures inoubliables et découvrez Kinshasa dans un confort et un style inégalés grâce à notre flotte de voitures exceptionnellement confortables.</p>
+                                <div class="spacer-10 d-none d-md-block d-lg-block"></div>
+                                <h1 class="mb-2 d-none d-md-block d-lg-block">Explorer Kinshasa avec un véhicule confortable</h1>
+                                <div class="spacer-10 d-none d-md-block d-lg-block"></div>
+                                <p class="lead d-none d-md-block d-lg-block">Embarquez pour des aventures inoubliables et découvrez Kinshasa dans un confort et un style inégalés grâce à notre flotte de voitures exceptionnellement confortables.</p>
                             </div>
 
-                            <div class="col-lg-6  mt-5">
+                            <div class="col-lg-6">
                                 <div class="spacer-single sm-hide"></div>
                                 <div class="p-4 rounded-3 shadow-soft text-light" data-bgcolor="rgba(0, 0, 0, .6)">
-
-
-                                    <form name="contactForm" id='contact_form' method="post">
-                                        <!-- <h5>Quel est votre type de véhicule ?</h5>
-
-                                        <div class="de_form de_radio row g-3">
-                                            <div class="radio-img col-lg-2 col-sm-2 col-6">
-                                                <input id="radio-1a" name="Car_Type" type="radio" value="Residential" checked="checked">
-                                                <label style="font-size: 10px;" for="radio-1a"><img src="images/car_icon/berline.png" alt="">Berline</label>
-                                            </div>
-
-                                            <div class="radio-img col-lg-2 col-sm-2 col-6">
-                                                <input id="radio-1b" name="Car_Type" type="radio" value="Office">
-                                                <label style="font-size: 10px;" for="radio-1b"><img src="images/car_icon/suv.png" alt="">SUV</label>
-                                            </div>
-
-                                            <div class="radio-img col-lg-2 col-sm-2 col-6">
-                                                <input id="radio-1c" name="Car_Type" type="radio" value="Commercial">
-                                                <label style="font-size: 10px;" for="radio-1c"><img src="images/car_icon/compact.png" alt="">Compact</label>
-                                            </div>
-
-                                            <div class="radio-img col-lg-2 col-sm-2 col-6">
-                                                <input id="radio-1d" name="Car_Type" type="radio" value="Retail">
-                                                <label style="font-size: 10px;" for="radio-1d"><img src="images/car_icon/pickup-2.png" alt="">Pick-Up</label>
-                                            </div>
-                                            <div class="radio-img col-lg-2 col-sm-2 col-6">
-                                                <input id="radio-1e" name="Car_Type" type="radio" value="Commercial">
-                                                <label style="font-size: 10px;" for="radio-1e"><img src="images/car_icon/van.png" alt="">Van</label>
-                                            </div>
-
-                                            <div class="radio-img col-lg-2 col-sm-2 col-6">
-                                                <input id="radio-1f" name="Car_Type" type="radio" value="Retail">
-                                                <label style="font-size: 10px;" for="radio-1f"><img src="images/car_icon/bus.png" alt="">Bus</label>
-                                            </div>
-                                        </div> -->
-
+                                    <form action="/vehicules" method="POST">
+                                        @csrf
                                         <div class="spacer-20"></div>
-
                                         <div class="row">
-                                            <div class="col-lg-6 mb20">
+                                            <div class="col-lg-12 mb20">
                                                 <h5>Lieu d'embarquement</h5>
-                                                <input type="text" name="PickupLocation" onfocus="geolocate()" placeholder="Enter your pickup location" id="autocomplete" autocomplete="off" class="form-control">
-
-                                                <div class="jls-address-preview jls-address-preview--hidden">
-                                                    <div class="jls-address-preview__header">
-                                                    </div>
-                                                </div>
+                                                <input type="text" name="pickupLocation" placeholder="Entrez votre lieu d'embarquement" id="autocomplete" autocomplete="off" class="form-control" required>
                                             </div>
-
-                                            <div class="col-lg-6 mb20">
-                                                <h5>Point d'arriver</h5>
-                                                <input type="text" name="DropoffLocation" onfocus="geolocate()" placeholder="Enter your dropoff location" id="autocomplete2" autocomplete="off" class="form-control">
-
-                                                <div class="jls-address-preview jls-address-preview--hidden">
-                                                    <div class="jls-address-preview__header">
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                             <div class="col-lg-6 mb20">
                                                 <h5>Date et heure de début</h5>
                                                 <div class="date-time-field">
-                                                    <input type="text" id="date-picker" name="Pick Up Date" value="">
-                                                    <select name="Pick Up Time" id="pickup-time">
-                                                        <option selected disabled value="Select time">Time</option>
-                                                        <option value="00:00">00:00</option>
-                                                        <option value="00:30">00:30</option>
-                                                        <option value="01:00">01:00</option>
-                                                        <option value="01:30">01:30</option>
-                                                        <option value="02:00">02:00</option>
-                                                        <option value="02:30">02:30</option>
-                                                        <option value="03:00">03:00</option>
-                                                        <option value="03:30">03:30</option>
-                                                        <option value="04:00">04:00</option>
-                                                        <option value="04:30">04:30</option>
-                                                        <option value="05:00">05:00</option>
-                                                        <option value="05:30">05:30</option>
-                                                        <option value="06:00">06:00</option>
-                                                        <option value="06:30">06:30</option>
-                                                        <option value="07:00">07:00</option>
+                                                    <input type="text" id="date-picker" name="pickUpDate" value="" required>
+                                                    <select name="pickUpTime" required>
                                                         <option value="07:30">07:30</option>
                                                         <option value="08:00">08:00</option>
                                                         <option value="08:30">08:30</option>
@@ -129,13 +62,7 @@
                                                         <option value="19:00">19:00</option>
                                                         <option value="19:30">19:30</option>
                                                         <option value="20:00">20:00</option>
-                                                        <option value="20:30">20:30</option>
-                                                        <option value="21:00">21:00</option>
-                                                        <option value="21:30">21:30</option>
-                                                        <option value="22:00">22:00</option>
-                                                        <option value="22:30">22:30</option>
-                                                        <option value="23:00">23:00</option>
-                                                        <option value="23:30">23:30</option>
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -143,24 +70,8 @@
                                             <div class="col-lg-6 mb20">
                                                 <h5>Date et heure de retour</h5>
                                                 <div class="date-time-field">
-                                                    <input type="text" id="date-picker-2" name="Collection Date" value="">
-                                                    <select name="Collection Time" id="collection-time">
-                                                        <option selected disabled value="Select time">Time</option>
-                                                        <option value="00:00">00:00</option>
-                                                        <option value="00:30">00:30</option>
-                                                        <option value="01:00">01:00</option>
-                                                        <option value="01:30">01:30</option>
-                                                        <option value="02:00">02:00</option>
-                                                        <option value="02:30">02:30</option>
-                                                        <option value="03:00">03:00</option>
-                                                        <option value="03:30">03:30</option>
-                                                        <option value="04:00">04:00</option>
-                                                        <option value="04:30">04:30</option>
-                                                        <option value="05:00">05:00</option>
-                                                        <option value="05:30">05:30</option>
-                                                        <option value="06:00">06:00</option>
-                                                        <option value="06:30">06:30</option>
-                                                        <option value="07:00">07:00</option>
+                                                    <input type="text" id="date-picker-2" name="collectionDate" value="" required>
+                                                    <select name="collectionTime" required>
                                                         <option value="07:30">07:30</option>
                                                         <option value="08:00">08:00</option>
                                                         <option value="08:30">08:30</option>
@@ -187,29 +98,23 @@
                                                         <option value="19:00">19:00</option>
                                                         <option value="19:30">19:30</option>
                                                         <option value="20:00">20:00</option>
-                                                        <option value="20:30">20:30</option>
-                                                        <option value="21:00">21:00</option>
-                                                        <option value="21:30">21:30</option>
-                                                        <option value="22:00">22:00</option>
-                                                        <option value="22:30">22:30</option>
-                                                        <option value="23:00">23:00</option>
-                                                        <option value="23:30">23:30</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <input type='submit' id='send_message' value='Reserver' class="btn-main pull-right">
+                                        <button name="reserve_jour" type="submit" id="send_message" value="Reserver" class="btn-main pull-right">Trouver</button>
 
                                         <div class="clearfix"></div>
-
                                     </form>
+
                                 </div>
                             </div>
 
                         </div>
-                        <div class="spacer-double d-lg-none d-sm-block"></div>
-                        <div class="spacer-double d-lg-none d-sm-block"></div>
+                        <!-- <div class="spacer-double d-lg-none d-sm-block"></div>
+                        <div class="spacer-double d-lg-none d-sm-block"></div> -->
+
                     </div>
 
                     <!-- <div class="position-absolute d-flex bottom-20">
@@ -274,7 +179,9 @@
                         </div>
                     </div> -->
                 </div>
+
             </div>
+
         </section>
         <section id="section-news" style="background-color: #f8f8f8">
             <div class="container">
