@@ -196,6 +196,7 @@ class ServiceController extends Controller
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $user->message = $request->input('message');
+        $user->password = bcrypt($request->input('password'));
 
         $user->save();
         // Créez une nouvelle instance de réservation

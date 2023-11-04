@@ -69,24 +69,25 @@
                                                 <input type="tel" name="phone" id="phone" class="form-control" required
                                                        placeholder="+243 xxx xxxx"/>
                                             </div>
+                                            <div class="col-lg-6 mb20">
+                                                <h5>Mot de passe</h5>
+                                                <input id="password" type="password"
+                                                       class="form-control @error('password') is-invalid @enderror"
+                                                       name="password" required autocomplete="new-password">
+                                            </div>
+
+                                            <div class="col-lg-6 mb20">
+                                                <h5>Confirmer</h5>
+                                                <input id="password-confirm" type="password" class="form-control"
+                                                       name="password_confirmation" required
+                                                       autocomplete="new-password">
+                                            </div>
 
                                             <div class="col-lg-12 mb20">
                                                 <h5>Message ou commentaire</h5>
                                                 <textarea class="form-control" name="message" id="message" cols="30"
                                                           rows="20"></textarea>
                                             </div>
-
-                                            {{--                                            <div class="col-lg-12 mb20">--}}
-                                            {{--                                                <div class="switch-with-title s2">--}}
-                                            {{--                                                    <h5>Termes et conditions</h5>--}}
-                                            {{--                                                    <div class="de-switch">--}}
-                                            {{--                                                        <input type="checkbox" name="accept-terms" id="accept-terms" class="checkbox" required>--}}
-                                            {{--                                                        <label for="accept-terms"></label>--}}
-                                            {{--                                                    </div>--}}
-                                            {{--                                                    <div class="clearfix"></div>--}}
-                                            {{--                                                    <p class="p-info">J'accepte les termes et conditions</p>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
                                         </div>
                                         <input type="hidden" name="type"
                                                value="{{ Auth::check() ? 'connected' : 'guest' }}">
